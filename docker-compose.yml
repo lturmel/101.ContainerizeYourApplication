@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  app:
+    image: 'myhelloworld101'
+    build: 
+      context: '.'
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=development
+      - Logging__LogLevel__Default=Warning
+      - Logging__LogLevel__System=Warning
+      - Logging__LogLevel__Microsoft=Error
