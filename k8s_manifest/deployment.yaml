@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydemo201-app
+  labels:
+    app.kubernetes.io/name: mydemo201
+    app.kubernetes.io/instance: mydemo201
+    app.kubernetes.io/managed-by: mydemo201-service
+    app.kubernetes.io/namespace: demo201
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mydemo201
+      app.kubernetes.io/instance: mydemo201
+      app.kubernetes.io/namespace: demo201
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mydemo201
+        app.kubernetes.io/instance: mydemo201
+        app.kubernetes.io/namespace: demo201
+    spec:
+      containers:
+      - name: mydemo201-app
+        image: lturmel/demo201:latest
+        imagePullPolicy: Always
+        env:
+          - name: AppName
+            value: MyDemo201App
+        ports:
+          - containerPort: 80
+            name: http
+            protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mydemo201-service
+  labels:
+    app.kubernetes.io/name: mydemo201-service
+    app.kubernetes.io/instance: mydemo201
+    app.kubernetes.io/managed-by: mydemo201
+    app.kubernetes.io/namespace: demo201
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: mydeemo201
+    app.kubernetes.io/instance: mydemo201
+    app.kubernetes.io/namespace: demo201
