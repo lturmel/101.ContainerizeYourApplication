@@ -41,7 +41,7 @@ kind: Service
 metadata:
   name: mydemo201-service
   labels:
-    app.kubernetes.io/name: mydemo201-service
+    app.kubernetes.io/name: mydemo201
     app.kubernetes.io/instance: mydemo201
     app.kubernetes.io/managed-by: mydemo201
     app.kubernetes.io/namespace: demo201
@@ -53,6 +53,6 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: mydeemo201
+    app.kubernetes.io/name: mydemo201
     app.kubernetes.io/instance: mydemo201
     app.kubernetes.io/namespace: demo201
