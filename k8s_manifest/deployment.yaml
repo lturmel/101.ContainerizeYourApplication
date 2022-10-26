@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/managed-by: mydemo201-service
     app.kubernetes.io/namespace: demo201
 spec:
-  replicas: 1
+  replicas: 2
   strategy:
     type: RollingUpdate
   selector:
