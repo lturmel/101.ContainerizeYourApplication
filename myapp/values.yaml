@@ -5,10 +5,10 @@
 replicaCount: 4
 
 image:
-  repository: lturmel/demo201
+  repository: lturmel/myhelloworld
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "0.0.1"
 
 imagePullSecrets: []
 nameOverride: "demo201"
